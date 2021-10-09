@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Videos</title>
+	<style>
+	.heading{
+		font-family: cursive;
+		font-size: 40px;
+		color: darkred;
+		padding: 10px;
+		text-align: center;
+	}
+		
+	body{
+		background-color: lightseagreen;
+	}
+	#content{
+		    display: flex;
+		    visibility: hidden;
+		    position: relative;
+		    cursor: pointer;
+		    justify-content: center;
+	}
+	#content p{
+		padding:10px;
+	}
+	video{
+		position: absolute;
+		max-width:100%;
+		width: 100%;
+    max-height:74%;
+    background-color: beige;
+	}
+
+	button{
+		font-size: 25px;
+    background: transparent;
+    color: gold;
+    
+	}
+	</style>
+	
+	
+</head>
+<body>
+<div class="container">
+	<div class="heading">
+		<p>Welcome To My Page</p>
+	</div>
+	<div id="video">
+		<video width="60%" controls autoplay id="myVideo" onpause="my_Fuction();" onplay="play_function();">
+			<source src="clip1.mp4" type="video/mp4">
+		</video>
+		
+	</div>
+	<div id="content">
+			<p><button onclick="clip1_function();">HOME</button></p>
+			<p><button onclick="clip2_function();">Design</button></p>
+			<p><button onclick="clip3_function();">Photography</button></p>
+	</div>
+	
+</div>
+<script>
+	var my_Video=document.getElementById('myVideo');
+	var source=document.querySelector('source');
+	var vid=document.getElementById('video');
+	var flag=0;
+	function my_Fuction() {
+		var para=document.querySelectorAll('#content p');
+		if(flag==0){
+		para[0].style.visibility="hidden";
+		para[1].style.visibility="visible";
+		para[2].style.visibility="visible";
+		}
+		else if (flag==1) {
+		para[1].style.visibility="hidden";
+		para[0].style.visibility="visible";
+		para[2].style.visibility="visible";	
+		}
+		else{
+		para[2].style.visibility="hidden";
+		para[0].style.visibility="visible";
+		para[1].style.visibility="visible";
+		}
+	}
+	function play_function() {
+		var para=document.querySelectorAll('#content p');
+		para[0].style.visibility="hidden";
+		para[1].style.visibility="hidden";
+		para[2].style.visibility="hidden";
+	}
+	function clip1_function() {
+
+		flag=0
+		vid.innerHTML='<video width="60%" controls autoplay id="myVideo" onpause="my_Fuction();" onplay="play_function();">			<source src="clip1.mp4" type="video/mp4">		</video>';
+	}
+	function clip2_function() {
+		flag=1;
+		vid.innerHTML='<video width="60%" controls autoplay id="myVideo" onpause="my_Fuction();" onplay="play_function();">			<source src="clip2.mp4" type="video/mp4">		</video>';
+	}
+	function clip3_function() {
+		flag=2;
+		vid.innerHTML='<video width="60%" controls autoplay id="myVideo" onpause="my_Fuction();" onplay="play_function();">			<source src="clip3.mp4" type="video/mp4">		</video>';
+	}
+</script>
+</body>
+</html>
